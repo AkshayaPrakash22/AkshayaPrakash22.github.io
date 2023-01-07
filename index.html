@@ -694,30 +694,30 @@
                         <form method="post" name="google-sheet">
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="name" placeholder="Your Name"
+                                    <input type="text" class="form-control p-4" id="name" name="Name" placeholder="Your Name"
                                         required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" placeholder="Your Email"
+                                    <input type="email" class="form-control p-4" id="email" name="Email" placeholder="Your Email"
                                         required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="subject" placeholder="Subject"
+                                <input type="text" class="form-control p-4" id="subject" name="Subject" placeholder="Subject"
                                     required="required" data-validation-required-message="Please enter a subject" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
+                                <textarea class="form-control py-3 px-4" rows="5" id="message" name="Message" placeholder="Message"
                                     required="required"
                                     data-validation-required-message="Please enter your message"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             
                             <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Send
+                                <button class="btn btn-outline-primary" type="submit" name="submit" id="sendMessageButton">Send
                                     Message</button>
                             </div>
                         </form>
@@ -767,6 +767,21 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+             const scriptURL = 'https://script.google.com/macros/s/AKfycbyl0wX39WQhFI3B5ubULNAIfJBeJfpXVmH7Tsh6nHYW-tCocMhzIQ8RcI1XNhZUivwTxQ/exec'
+		const form = document.forms['google-sheet']
+
+		form.addEventListener('submit', e=> {
+   			 e.preventDefault()
+    			fetch(scriptURL, {
+        		redirect: "follow",
+        		method: 'POST', 
+        		body: new FormData(form)
+    			}).then(response => alert("Thanks for submitting!"))
+    			.catch(error => console.error('Error!', error.message))
+			})
+
+</script>
 </body>
 
 </html>
