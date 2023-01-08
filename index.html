@@ -768,16 +768,15 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     <script>
-             const scriptURL = 'https://script.google.com/macros/s/AKfycbyl0wX39WQhFI3B5ubULNAIfJBeJfpXVmH7Tsh6nHYW-tCocMhzIQ8RcI1XNhZUivwTxQ/exec'
+             const scriptURL = 'https://script.google.com/macros/s/AKfycbwGJRcsY_4mo182W4iw6UoTo32ukFmghqjZHitOCzUDm5E-guWaZVANADnWe3f0vFcvCA/exec'
 		const form = document.forms['google-sheet']
 
 		form.addEventListener('submit', e=> {
    			 e.preventDefault()
     			fetch(scriptURL, {
-        		redirect: "follow",
         		method: 'POST', 
         		body: new FormData(form)
-    			}).then(response => alert("Thanks for submitting!"))
+    			}).then(response => alert("Thanks for Contacting!"))
     			.catch(error => console.error('Error!', error.message))
 			})
 
